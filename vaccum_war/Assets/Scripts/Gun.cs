@@ -14,10 +14,13 @@ public class Gun : Weapon
 
     protected override void Shoot()
     {
-        base.Shoot();
-        Projectile projectileInstance = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        projectileInstance.Init(this);
-        projectileInstance.Launch();
+        if (gunHead.value)
+        {
+            base.Shoot();
+            Projectile projectileInstance = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            projectileInstance.Init(this);
+            projectileInstance.Launch();
+        }
     }
 
     protected override void StopShooting(XRBaseInteractor xRBaseInteractor)
