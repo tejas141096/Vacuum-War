@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
-{
+{   
     protected Weapon weapon;
 
     public virtual void Init(Weapon weapon)
