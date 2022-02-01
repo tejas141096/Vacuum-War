@@ -10,7 +10,7 @@ public class Vaccum : Weapon
 
     void OnCollisionEnter(Collision col)
     {
-
+        print("col enter");
         // Add the GameObject collided with to the list.
         currentCollisions.Add(col.gameObject);
 
@@ -23,7 +23,7 @@ public class Vaccum : Weapon
 
     void OnCollisionExit(Collision col)
     {
-
+        print("col exit");
         // Remove the GameObject collided with from the list.
         currentCollisions.Remove(col.gameObject);
 
@@ -48,14 +48,12 @@ public class Vaccum : Weapon
     protected override void Collect()
     {
         base.Collect();
-        if (!gunHead.value)
+        bullets += (int)(currentCollisions.Count);
+        print(bullets);
+        foreach (GameObject gObject in currentCollisions)
         {
-            bullets += (int)(currentCollisions.Count);
-            foreach (GameObject gObject in currentCollisions)
-            {
-                print(gObject.name);
-                gObject.SetActive(false);
-            }
+            print(gObject.name);
+            gObject.SetActive(false);
         }
     }
 

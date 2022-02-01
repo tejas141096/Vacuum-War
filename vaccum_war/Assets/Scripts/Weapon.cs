@@ -25,6 +25,7 @@ public class Weapon : MonoBehaviour
     private InputDevice targetDevice;
     private Rigidbody rigidBody;
     private XRGrabInteractable interactableWeapon;
+    
     //========================================================================================================================================
 
 
@@ -76,6 +77,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        gunHead.value = true;
         List<InputDevice> devices = new List<InputDevice>();
         InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
         InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
@@ -83,28 +85,44 @@ public class Weapon : MonoBehaviour
         {
             targetDevice = devices[0];
         }
-        print(gunHead.value);
+        gameObject.GetComponent<Gun>().enabled = true;
+        gameObject.GetComponent<Vaccum>().enabled = false;
+        print(targetDevice);
     }
 
+    [Obsolete]
     private void Update()
     {
         targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButtonValue);
         if (primaryButtonValue == true && timer)
         {
-            print("1");
             gunHead.value = !gunHead.value;
             timer = false;
             print("Changed gun head");
+            print(gunHead.value);
             if (!gunHead.value)
             {
                 vaccumHead.SetActive(true);
+                gameObject.GetComponent<Gun>().enabled = false;
+                gameObject.GetComponent<Vaccum>().enabled = true;
             }
             else
             {
                 vaccumHead.SetActive(false);
+                gameObject.GetComponent<Gun>().enabled = true;
+                gameObject.GetComponent<Vaccum>().enabled = false;
             }
+            SetupInteractableWeaponEvents();
             StartCoroutine(WaitForIt(3.0F));
         }
+    }
+    //========================================================================================================================================
+
+    //========================================================================================================================================
+    IEnumerator WaitForIt(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        timer = true;
     }
     //========================================================================================================================================
 
@@ -118,21 +136,19 @@ public class Weapon : MonoBehaviour
     {
         //interactableWeapon.onSelectEntered.AddListener(PickupWeapon);
         //interactableWeapon.onSelectExited.AddListener(DropWeapon);
-        interactableWeapon.onActivate.AddListener(StartShooting);
-        interactableWeapon.onDeactivate.AddListener(StopShooting);
 
-        interactableWeapon.onActivate.AddListener(StartCollecting);
-        interactableWeapon.onDeactivate.AddListener(StopCollecting);
-
-    }
-    //========================================================================================================================================
-
-
-    //========================================================================================================================================
-    IEnumerator WaitForIt(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        timer = true;
+        interactableWeapon.onActivate.RemoveAllListeners();
+        interactableWeapon.onDeactivate.RemoveAllListeners();
+        if (gunHead.value)
+        {
+            interactableWeapon.onActivate.AddListener(StartCollecting);
+            interactableWeapon.onDeactivate.AddListener(StopCollecting);
+        }
+        else
+        {
+            interactableWeapon.onActivate.AddListener(StartShooting);
+            interactableWeapon.onDeactivate.AddListener(StopShooting);
+        }
     }
     //========================================================================================================================================
 
