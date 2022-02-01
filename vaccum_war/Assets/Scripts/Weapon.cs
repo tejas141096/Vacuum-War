@@ -38,36 +38,41 @@ public class Weapon : MonoBehaviour
     {
         interactableWeapon = GetComponent<XRGrabInteractable>();
         rigidBody = GetComponent<Rigidbody>();
-        gunHead.value = true;
+        gunHead.value = false;
         SetupInteractableWeaponEvents();
     }
 
-    private void Start()
+    //private void Start()
+    //{
+    //}
+
+    [Obsolete]
+    private void Update()
     {
         List<InputDevice> devices = new List<InputDevice>();
-        InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+        InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right;
         InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
         if (devices.Count > 0)
         {
             targetDevice = devices[0];
         }
-        print(targetDevice);
-    }
 
-    [Obsolete]
-    private void Update()
-    {
+
         targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButtonValue);
         if (primaryButtonValue == true && timer)
         {
-            gunHead.value = !gunHead.value;
             timer = false;
             print("Changed gun head");
-            if (gunHead.value)
+            if (!gunHead.value)
+            {
+                gunHead.value = true;
                 vaccumHead.SetActive(false);
-
+            }
             else
+            {
+                gunHead.value = false;
                 vaccumHead.SetActive(true);
+            }
             ////SetupInteractableWeaponEvents();
             StartCoroutine(WaitForIt(3.0F));
         }
@@ -90,23 +95,11 @@ public class Weapon : MonoBehaviour
     [Obsolete]
     private void SetupInteractableWeaponEvents()
     {
-        //interactableWeapon.onSelectEntered.AddListener(PickupWeapon);
-        //interactableWeapon.onSelectExited.AddListener(DropWeapon);
-
-        //interactableWeapon.onActivate.RemoveAllListeners();
-        //interactableWeapon.onDeactivate.RemoveAllListeners();
-        //if (gunHead.value)
-        //{
-        print("Gun listener");
         interactableWeapon.onActivate.AddListener(StartShooting);
         interactableWeapon.onDeactivate.AddListener(StopShooting);
-        //}
-        //else
-        //{
-        print("Vaccum Listener");
+
         interactableWeapon.onActivate.AddListener(StartCollecting);
         interactableWeapon.onDeactivate.AddListener(StopCollecting);
-        //}
     }
     //========================================================================================================================================
 

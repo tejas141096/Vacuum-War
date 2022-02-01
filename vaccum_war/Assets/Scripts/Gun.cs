@@ -20,9 +20,17 @@ public class Gun : Weapon
         if (gunHead.value)
         {
             base.Shoot();
-            Projectile projectileInstance = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-            projectileInstance.Init(this);
-            projectileInstance.Launch();
+            if (bullets > 0)
+            {
+                Projectile projectileInstance = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+                projectileInstance.Init(this);
+                projectileInstance.Launch();
+                bullets--;
+            }
+            else
+            {
+                print("Collect more objects");
+            }
         }
     }
 
@@ -33,39 +41,19 @@ public class Gun : Weapon
 
 
 
-
-
-
-
-
-
     // Declare and initialize a new List of GameObjects called currentCollisions.
     List<GameObject> currentCollisions = new List<GameObject>();
 
     void OnCollisionEnter(Collision col)
     {
-        print("col enter");
         // Add the GameObject collided with to the list.
         currentCollisions.Add(col.gameObject);
-
-        // Print the entire list to the console.
-        foreach (GameObject gObject in currentCollisions)
-        {
-            print(gObject.name);
-        }
     }
 
     void OnCollisionExit(Collision col)
     {
-        print("col exit");
         // Remove the GameObject collided with from the list.
         currentCollisions.Remove(col.gameObject);
-
-        // Print the entire list to the console.
-        foreach (GameObject gObject in currentCollisions)
-        {
-            print(gObject.name);
-        }
     }
 
     protected override void StartCollecting(XRBaseInteractor xRBaseInteractor)
@@ -87,12 +75,12 @@ public class Gun : Weapon
         if (!gunHead.value)
         {
             base.Collect();
+            print(currentCollisions.Count);
             bullets += (int)(currentCollisions.Count);
             print(bullets);
             foreach (GameObject gObject in currentCollisions)
             {
-                print(gObject.name);
-                gObject.SetActive(false);
+                Destroy(gObject);
             }
             currentCollisions.Clear();
         }
