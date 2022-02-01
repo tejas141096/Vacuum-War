@@ -25,42 +25,8 @@ public class Weapon : MonoBehaviour
     private InputDevice targetDevice;
     private Rigidbody rigidBody;
     private XRGrabInteractable interactableWeapon;
-    
+
     //========================================================================================================================================
-
-
-    ////========================================================================================================================================
-    ///// <summary>
-    ///// List of current collisions
-    ///// </summary>
-    //List<GameObject> currentCollisions = new List<GameObject>();
-
-    //void OnCollisionEnter(Collision col)
-    //{
-
-    //    // Add the GameObject collided with to the list.
-    //    currentCollisions.Add(col.gameObject);
-
-    //    // Print the entire list to the console.
-    //    foreach (GameObject gObject in currentCollisions)
-    //    {
-    //        print(gObject.name);
-    //    }
-    //}
-
-    //void OnCollisionExit(Collision col)
-    //{
-
-    //    // Remove the GameObject collided with from the list.
-    //    currentCollisions.Remove(col.gameObject);
-
-    //    // Print the entire list to the console.
-    //    foreach (GameObject gObject in currentCollisions)
-    //    {
-    //        print(gObject.name);
-    //    }
-    //}
-    ////========================================================================================================================================
 
 
     //========================================================================================================================================
@@ -72,12 +38,12 @@ public class Weapon : MonoBehaviour
     {
         interactableWeapon = GetComponent<XRGrabInteractable>();
         rigidBody = GetComponent<Rigidbody>();
+        gunHead.value = true;
         SetupInteractableWeaponEvents();
     }
 
     private void Start()
     {
-        gunHead.value = true;
         List<InputDevice> devices = new List<InputDevice>();
         InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
         InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
@@ -85,8 +51,6 @@ public class Weapon : MonoBehaviour
         {
             targetDevice = devices[0];
         }
-        gameObject.GetComponent<Gun>().enabled = true;
-        gameObject.GetComponent<Vaccum>().enabled = false;
         print(targetDevice);
     }
 
@@ -99,20 +63,12 @@ public class Weapon : MonoBehaviour
             gunHead.value = !gunHead.value;
             timer = false;
             print("Changed gun head");
-            print(gunHead.value);
-            if (!gunHead.value)
-            {
-                vaccumHead.SetActive(true);
-                gameObject.GetComponent<Gun>().enabled = false;
-                gameObject.GetComponent<Vaccum>().enabled = true;
-            }
-            else
-            {
+            if (gunHead.value)
                 vaccumHead.SetActive(false);
-                gameObject.GetComponent<Gun>().enabled = true;
-                gameObject.GetComponent<Vaccum>().enabled = false;
-            }
-            SetupInteractableWeaponEvents();
+
+            else
+                vaccumHead.SetActive(true);
+            ////SetupInteractableWeaponEvents();
             StartCoroutine(WaitForIt(3.0F));
         }
     }
@@ -137,18 +93,20 @@ public class Weapon : MonoBehaviour
         //interactableWeapon.onSelectEntered.AddListener(PickupWeapon);
         //interactableWeapon.onSelectExited.AddListener(DropWeapon);
 
-        interactableWeapon.onActivate.RemoveAllListeners();
-        interactableWeapon.onDeactivate.RemoveAllListeners();
-        if (gunHead.value)
-        {
-            interactableWeapon.onActivate.AddListener(StartCollecting);
-            interactableWeapon.onDeactivate.AddListener(StopCollecting);
-        }
-        else
-        {
-            interactableWeapon.onActivate.AddListener(StartShooting);
-            interactableWeapon.onDeactivate.AddListener(StopShooting);
-        }
+        //interactableWeapon.onActivate.RemoveAllListeners();
+        //interactableWeapon.onDeactivate.RemoveAllListeners();
+        //if (gunHead.value)
+        //{
+        print("Gun listener");
+        interactableWeapon.onActivate.AddListener(StartShooting);
+        interactableWeapon.onDeactivate.AddListener(StopShooting);
+        //}
+        //else
+        //{
+        print("Vaccum Listener");
+        interactableWeapon.onActivate.AddListener(StartCollecting);
+        interactableWeapon.onDeactivate.AddListener(StopCollecting);
+        //}
     }
     //========================================================================================================================================
 
