@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
-{   
-    protected Weapon weapon;
-
-    public virtual void Init(Weapon weapon)
+namespace VWPrototypeLegacy
+{
+    public class Projectile : MonoBehaviour
     {
-        this.weapon = weapon;
-    }
+        protected Weapon weapon;
 
-    public virtual void Launch()
-    {
+        public virtual void Init(Weapon weapon)
+        {
+            this.weapon = weapon;
+        }
 
+        public virtual void Launch()
+        {
+
+        }
     }
 }

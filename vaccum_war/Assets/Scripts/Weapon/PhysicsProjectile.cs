@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class PhysicsProjectile : Projectile
+namespace VWPrototypeLegacy
 {
-    [SerializeField] private float lifeTime;
-    private Rigidbody rigidBody;
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody))]
+    public class PhysicsProjectile : Projectile
     {
-        rigidBody = GetComponent<Rigidbody>();
-    }
+        [SerializeField] private float lifeTime;
+        private Rigidbody rigidBody;
 
-    public override void Init(Weapon weapon)
-    {
-        base.Init(weapon);
-        Destroy(gameObject, lifeTime);
-    }
+        private void Awake()
+        {
+            rigidBody = GetComponent<Rigidbody>();
+        }
 
-    public override void Launch()
-    {
-        base.Launch();
-        rigidBody.AddRelativeForce(Vector3.forward * weapon.GetShootingForce(), ForceMode.Impulse);
+        public override void Init(Weapon weapon)
+        {
+            base.Init(weapon);
+            Destroy(gameObject, lifeTime);
+        }
+
+        public override void Launch()
+        {
+            base.Launch();
+            rigidBody.AddRelativeForce(Vector3.forward * weapon.GetShootingForce(), ForceMode.Impulse);
+        }
     }
 }
