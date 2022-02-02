@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 9179337559514648141}
   - component: {fileID: 1776165765429909186}
   - component: {fileID: 6767915269218857341}
+  - component: {fileID: 8661842662490089897}
   m_Layer: 0
   m_Name: Screw4
   m_TagString: Collectable
@@ -255,6 +256,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72417bb6c261873439f38d4698ddf667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoGain: 1
+--- !u!114 &8661842662490089897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3359497418775486604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc9158a1e6ee0141ac6df714104a5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeOut: 10
+  detachChildren: 0
 --- !u!1 &8501859736471788589
 GameObject:
   m_ObjectHideFlags: 0

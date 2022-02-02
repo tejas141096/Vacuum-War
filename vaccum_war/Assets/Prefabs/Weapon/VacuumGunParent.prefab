@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58261f5a5d6f2284788071fcecb9403d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHeadMode: 1
+  initialHeadMode: 2
   allowToSwitchHead: 1
   heads:
   - {fileID: 7063626013367455444}
@@ -333,8 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89fd069913efb0e419338425e6f8935a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initAmmo: 25
-  maxAmmo: 30
+  initAmmo: 999
+  maxAmmo: 999
   ammoIndicator: {fileID: 1633690201348103191}
 --- !u!114 &-2209885404976327143
 MonoBehaviour:

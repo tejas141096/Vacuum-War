@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1720767777712331416}
   - component: {fileID: 486720797037176177}
   - component: {fileID: -5643442228066659271}
+  - component: {fileID: 6196493424600676838}
   m_Layer: 0
   m_Name: Screw12
   m_TagString: Collectable
@@ -62,6 +63,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72417bb6c261873439f38d4698ddf667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoGain: 1
+--- !u!114 &6196493424600676838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593486952057764172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc9158a1e6ee0141ac6df714104a5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeOut: 10
+  detachChildren: 0
 --- !u!1 &7558991635830331081
 GameObject:
   m_ObjectHideFlags: 0

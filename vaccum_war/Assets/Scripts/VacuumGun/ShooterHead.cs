@@ -42,7 +42,7 @@ namespace VWPrototype
             // Todo: Fire-Mode
             if (Params.projectile)
             {
-                var p = Instantiate(Params.projectile.gameObject, projectileGeneratingPoint) as GameObject;
+                var p = Instantiate(Params.projectile.gameObject, projectileGeneratingPoint.position, projectileGeneratingPoint.rotation) as GameObject;
                 p.GetComponent<Rigidbody>().AddForce(projectileGeneratingPoint.forward * Params.launchForce, ForceMode.Impulse);
             }
 

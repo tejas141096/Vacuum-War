@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5352329689709426787}
   - component: {fileID: 7836109375235160417}
   - component: {fileID: 6914612976580456828}
+  - component: {fileID: 6643090216045499564}
   m_Layer: 0
   m_Name: Screw6
   m_TagString: Collectable
@@ -77,6 +78,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72417bb6c261873439f38d4698ddf667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoGain: 1
+--- !u!114 &6643090216045499564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851548273933411449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc9158a1e6ee0141ac6df714104a5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeOut: 10
+  detachChildren: 0
 --- !u!1 &7175163135102966762
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +105,6 @@ GameObject:
   - component: {fileID: 1416676448332125997}
   - component: {fileID: 4322959788211684671}
   - component: {fileID: 2380413060560109794}
-  - component: {fileID: 5133754336437107131}
   m_Layer: 0
   m_Name: Cylinder014
   m_TagString: Collectable
@@ -172,20 +187,6 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6571506424998889177, guid: be28ce3390dc28a45b53f674dab53b78, type: 3}
---- !u!64 &5133754336437107131
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7175163135102966762}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6571506424998889177, guid: be28ce3390dc28a45b53f674dab53b78, type: 3}
 --- !u!1 &7346053383063393581
