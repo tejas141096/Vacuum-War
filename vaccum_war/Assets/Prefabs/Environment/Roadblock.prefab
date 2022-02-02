@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 400002}
   - component: {fileID: 6400000}
   m_Layer: 0
-  m_Name: PF_FLO_Banister_Straight_1m 1
+  m_Name: Roadblock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
