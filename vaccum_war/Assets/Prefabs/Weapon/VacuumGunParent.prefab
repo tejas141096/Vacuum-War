@@ -388,6 +388,8 @@ MonoBehaviour:
       Value: 1
     - Key: D6184D30
       Value: 2
+  AutoResetHead: 1
+  SecondsToResetHead: 3
 --- !u!1 &6550149893996438788
 GameObject:
   m_ObjectHideFlags: 0
