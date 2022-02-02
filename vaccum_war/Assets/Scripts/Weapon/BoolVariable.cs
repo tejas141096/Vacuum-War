@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VWPrototypeLegacy
 {
-    [CreateAssetMenu(menuName = "Bool Variable")]
+    [CreateAssetMenu(menuName = "VacuumWar/Prototype/Legacy/Bool Variable")]
     public class BoolVariable : ScriptableObject
     {
         public bool value;
