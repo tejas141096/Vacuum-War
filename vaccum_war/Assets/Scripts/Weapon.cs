@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(XRGrabInteractable))]
@@ -21,6 +22,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float damage;
 
     protected int bullets = 0;
+    protected TextMeshProUGUI bulletText;
     private bool timer = true;
     private InputDevice targetDevice;
     private Rigidbody rigidBody;
@@ -42,9 +44,11 @@ public class Weapon : MonoBehaviour
         SetupInteractableWeaponEvents();
     }
 
-    //private void Start()
-    //{
-    //}
+    private void Start()
+    {
+        bulletText = FindObjectOfType<TextMeshProUGUI>();
+        print(bulletText);
+    }
 
     [Obsolete]
     private void Update()

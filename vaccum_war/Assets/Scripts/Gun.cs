@@ -26,6 +26,7 @@ public class Gun : Weapon
                 projectileInstance.Init(this);
                 projectileInstance.Launch();
                 bullets--;
+                bulletText.SetText("Bullets = " + bullets);
             }
             else
             {
@@ -47,7 +48,10 @@ public class Gun : Weapon
     void OnCollisionEnter(Collision col)
     {
         // Add the GameObject collided with to the list.
-        currentCollisions.Add(col.gameObject);
+        if (col.gameObject.tag == "env")
+        {
+            currentCollisions.Add(col.gameObject);
+        }
     }
 
     void OnCollisionExit(Collision col)
@@ -77,6 +81,7 @@ public class Gun : Weapon
             base.Collect();
             print(currentCollisions.Count);
             bullets += (int)(currentCollisions.Count);
+            bulletText.SetText("Bullets = " + bullets);
             print(bullets);
             foreach (GameObject gObject in currentCollisions)
             {
