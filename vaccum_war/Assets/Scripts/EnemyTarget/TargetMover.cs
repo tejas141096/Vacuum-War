@@ -13,25 +13,35 @@ public class TargetMover : MonoBehaviour {
 	// motion parameters
 	public float spinSpeed = 180.0f;
 	public float motionMagnitude = 0.1f;
+	public float motionRandomMaxPercentage = 0.7f;
+	private float motionMultiplyer = 1f;
 
-	// Update is called once per frame
-	void Update () {
+    private void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update () 
+	{
+
+		motionMultiplyer = Random.Range(-motionRandomMaxPercentage, motionRandomMaxPercentage) + 1f;
 
 		// do the appropriate motion based on the motionState
-		switch(motionState) {
+		switch (motionState) {
 			case motionDirections.Spin:
 				// rotate around the up axix of the gameObject
-				gameObject.transform.Rotate (Vector3.up * spinSpeed * Time.deltaTime);
+				gameObject.transform.Rotate (Vector3.up * spinSpeed * Time.deltaTime * motionMultiplyer);
 				break;
 			
 			case motionDirections.Vertical:
 				// move up and down over time
-				gameObject.transform.Translate(Vector3.up * Mathf.Cos(Time.timeSinceLevelLoad) * motionMagnitude);
+				gameObject.transform.Translate(Vector3.up * Mathf.Cos(Time.timeSinceLevelLoad) * motionMagnitude * motionMultiplyer);
 				break;
 
             case motionDirections.Horizontal:
                 // move up and down over time
-                gameObject.transform.Translate(Vector3.right * Mathf.Cos(Time.timeSinceLevelLoad) * motionMagnitude);
+                gameObject.transform.Translate(Vector3.right * Mathf.Cos(Time.timeSinceLevelLoad) * motionMagnitude * motionMultiplyer);
                 break;
 		}
 	}

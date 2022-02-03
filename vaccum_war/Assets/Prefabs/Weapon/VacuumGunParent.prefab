@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58261f5a5d6f2284788071fcecb9403d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHeadMode: 2
+  initialHeadMode: 0
   allowToSwitchHead: 1
   heads:
   - {fileID: 7063626013367455444}
@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89fd069913efb0e419338425e6f8935a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initAmmo: 999
-  maxAmmo: 999
+  initAmmo: 10
+  maxAmmo: 30
   ammoIndicator: {fileID: 1633690201348103191}
 --- !u!114 &-2209885404976327143
 MonoBehaviour:
@@ -370,6 +370,91 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
+  enableOverrideHeadSwitchInput: 0
+  SwitchEmptyHeadAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Switch Empty Head
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 484c2520-6311-4902-b5f0-4cb9a3d34496
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 3dce309d-3dfe-4389-965c-f38b91ff3fdd
+        m_Path: <XRController>{RightHand}/thumbstickClicked
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Switch Empty Head
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 85cd4d00-4df2-470c-b00c-7f58cd8deee2
+        m_Path: <Keyboard>/1
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Switch Empty Head
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  SwitchShooterHeadAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Switch Shooter Head
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 958bc57b-0900-4c43-b382-864145cad5ad
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 65d9eca4-018c-4b54-a89f-f46dbfa3c08d
+        m_Path: <XRController>{RightHand}/secondaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Switch Shooter Head
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 9a7cefd6-be65-4e93-b0c0-c3cecc41c90e
+        m_Path: <Keyboard>/2
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Switch Shooter Head
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  SwitchRollerHeadAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Switch Roller Head
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: e3cf43b1-a6cf-48dd-aefd-2689df9dec9b
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 907ec649-7de1-4700-bcac-d55dbbb2b25f
+        m_Path: <XRController>{RightHand}/primaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Switch Roller Head
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 279b3d4d-9eb7-4043-afe8-0b1f351918a3
+        m_Path: <Keyboard>/3
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Switch Roller Head
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!114 &9138288880867164565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,10 +471,10 @@ MonoBehaviour:
     list:
     - Key: E47A8B4D
       Value: 1
-    - Key: D6184D30
+    - Key: 47BAB12D
       Value: 2
   AutoResetHead: 1
-  SecondsToResetHead: 3
+  SecondsToResetHead: 2.5
 --- !u!1 &6550149893996438788
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223f0e4bcadad324e9ab9a12c33326a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM5
+  portName: COM4
   baudRate: 115200
   messageListener: {fileID: 4426752701934428675}
   reconnectionDelay: 1000

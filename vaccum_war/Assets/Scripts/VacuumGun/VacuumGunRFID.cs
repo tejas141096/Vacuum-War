@@ -10,7 +10,7 @@ namespace VWPrototype
         // Start is called before the first frame update
         public SerializableDictionary<string,HeadMode> UIDList;
         public bool AutoResetHead = false;
-        public int SecondsToResetHead = 3;
+        public float SecondsToResetHead = 1.5f;
         private Coroutine resetTimer = null;
         new void Start()
         {
@@ -40,7 +40,7 @@ namespace VWPrototype
             }
         }
 
-        IEnumerator ResetHead(int time) {
+        IEnumerator ResetHead(float time) {
             yield return new WaitForSecondsRealtime(time);
             Debug.Log("Reset Head to Empty");
             gunFrame.SwitchHead(HeadMode.Empty);

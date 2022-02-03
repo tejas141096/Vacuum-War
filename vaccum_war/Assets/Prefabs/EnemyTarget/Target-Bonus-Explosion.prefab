@@ -4986,3 +4986,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeOut: 1
   detachChildren: 0
+  destroyChildren: 1
