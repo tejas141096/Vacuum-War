@@ -1302,7 +1302,7 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
-  initTime: 10
+  initTime: 90
   scoreBoardText: {fileID: 3535539719845876355}
   audioSourceBGM: {fileID: 3231953418078090925}
   audioSourceHighScore: {fileID: 4225518467874848856}
@@ -1785,7 +1785,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ef292949e52af1a469c00106de52f4ec, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ec0c62f08d427c848bf493ab3fb08b9c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1

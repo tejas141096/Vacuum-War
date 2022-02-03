@@ -66,6 +66,20 @@ namespace VWPrototype
             {
                 Scoring();
             }
+            if(audioSourceBGM && audioSourceBGM.isPlaying)
+            {
+                if (timeRemaining > initTime * 0.5)
+                {
+                    audioSourceBGM.pitch = 1;
+                }
+                else if (timeRemaining <= initTime *0.5 && timeRemaining > initTime * 0.2)
+                {
+                    audioSourceBGM.pitch = 1.1f;
+                }else if (timeRemaining <= initTime * 0.2)
+                {
+                    audioSourceBGM.pitch = 1.2f;
+                }
+            }
         }
 
         private void Scoring()
