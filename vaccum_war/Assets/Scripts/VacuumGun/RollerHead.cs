@@ -8,6 +8,9 @@ namespace VWPrototype
     public class RollerHead : AVacuumGunHead
     {
         public Collider detectionCollider;
+        public AudioSource audioSourceOnGoing;
+        public AudioSource audioSourceCollecting;
+
         private bool isSucking = false;
 
         new void Start()
@@ -26,16 +29,25 @@ namespace VWPrototype
         public override void Activate()
         {
             isSucking = true;
+            if (audioSourceOnGoing)
+            {
+                audioSourceOnGoing.Play();
+            }
         }
 
         public override void Deactivate()
         {
             isSucking = false;
+            if (audioSourceOnGoing)
+            {
+                audioSourceOnGoing.Stop();
+            }
         }
 
         public override void OnGoing()
         {
             isSucking = true;
+
         }
 
         private void OnTriggerEnter(Collider other)
@@ -67,7 +79,11 @@ namespace VWPrototype
                     var ammoFunc = gunFrame.GetComponent<VacuumGunAmmoFunction>();
                     if(ammoFunc)
                     {
-                        ammoFunc.TryChangeAmmo(c.ammoGain);
+                        var num = ammoFunc.TryChangeAmmo(c.ammoGain);
+                        if (num > 0 && audioSourceCollecting) 
+                        {
+                            audioSourceCollecting.Play();
+                        }
                     }
                     c.OnCollected();
                 }

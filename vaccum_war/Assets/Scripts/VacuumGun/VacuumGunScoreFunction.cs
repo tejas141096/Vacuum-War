@@ -14,6 +14,10 @@ namespace VWPrototype
         public float initTime = 120f;
         public TextMeshPro scoreBoardText;
 
+        public AudioSource audioSourceBGM;
+        public AudioSource audioSourceHighScore;
+        public AudioSource audioSourceGameOver;
+
         [HideInInspector]
         public int score = 0;
         [HideInInspector]
@@ -30,6 +34,18 @@ namespace VWPrototype
             {
                 scoreBoardText.text = "Hold A to start scoring";
             }
+            if (audioSourceBGM)
+            {
+                audioSourceBGM.Stop();
+            }
+            if (audioSourceHighScore)
+            {
+                audioSourceHighScore.Stop();
+            }
+            if (audioSourceGameOver)
+            {
+                audioSourceGameOver.Stop();
+            }
         }
 
         public void ChangeScore(int delta)
@@ -40,7 +56,6 @@ namespace VWPrototype
             }
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (resetScoreAction.action.WasPerformedThisFrame())
@@ -73,6 +88,11 @@ namespace VWPrototype
                 gunFrame.GetComponent<VacuumGunAmmoFunction>().ResetAmmo();
             }
             refreshScoreBoard();
+            if (audioSourceBGM)
+            {
+                audioSourceBGM.Play();
+                audioSourceBGM.pitch = 1;
+            }
         }
 
 
@@ -88,6 +108,11 @@ namespace VWPrototype
         private void StopScoring()
         {
             isScoring = false;
+            if (audioSourceBGM)
+            {
+                audioSourceBGM.Stop();
+            }
+            // High score
             if (score > highScore)
             {
                 highScore = score;
@@ -96,13 +121,22 @@ namespace VWPrototype
                     scoreBoardText.text = $"You beat High Score!\nYour Score: {highScore}\nHold A to restart";
                     scoreBoardText.color = Color.yellow;
                 }
+                if (audioSourceHighScore)
+                {
+                    audioSourceHighScore.Play();
+                }
             }
+            // Game over
             else
             {
                 if (scoreBoardText)
                 {
                     scoreBoardText.text = $"High Score: {highScore}\nYour Score: {score}\nHold A to restart";
                     scoreBoardText.color = Color.white;
+                }
+                if (audioSourceGameOver)
+                {
+                    audioSourceGameOver.Play();
                 }
             }
         }

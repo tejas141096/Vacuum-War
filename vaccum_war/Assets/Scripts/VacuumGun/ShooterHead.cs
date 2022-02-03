@@ -8,6 +8,12 @@ namespace VWPrototype
     {
         public ShooterHeadParams Params;
         public Transform projectileGeneratingPoint;
+
+        public AudioSource audioSourceFire;
+        public AudioSource audioSourceFireWhenOutOfAmmo;
+
+        public GameObject muzzleFlameVFX;
+
         public override void Activate()
         {
             var ammoFunction = gunFrame.GetComponent<VacuumGunAmmoFunction>();
@@ -20,7 +26,10 @@ namespace VWPrototype
                 }
                 else
                 {
-                    // Todo: empty ammo audio
+                    if (audioSourceFireWhenOutOfAmmo)
+                    {
+                        audioSourceFireWhenOutOfAmmo.Play();
+                    }
                 }
             }
             else
@@ -46,7 +55,15 @@ namespace VWPrototype
                 p.GetComponent<Rigidbody>().AddForce(projectileGeneratingPoint.forward * Params.launchForce, ForceMode.Impulse);
             }
 
-            // Todo: Audio and Particles
+            if (audioSourceFire)
+            {
+                audioSourceFire.Play();
+            }
+
+            if (muzzleFlameVFX)
+            {
+                Instantiate(muzzleFlameVFX, projectileGeneratingPoint);
+            }
         }
 
         new void Start()

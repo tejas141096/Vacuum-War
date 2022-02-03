@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreAmount: 200
-  timeAmount: 3
+  timeAmount: 0
   explosionPrefab: {fileID: 1751494251524924, guid: e49851128b84f17499f224fb2f21bcf8,
     type: 3}
 --- !u!114 &114863113579350962

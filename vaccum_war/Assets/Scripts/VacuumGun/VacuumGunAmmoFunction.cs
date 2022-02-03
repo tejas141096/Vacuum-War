@@ -20,7 +20,10 @@ namespace VWPrototype
             ResetAmmo();
         }
 
-        // Return the value that was succesfully changed
+        /// <summary>
+        /// </summary>
+        /// <param name="delta"></param>
+        /// <returns> Return the value that was succesfully changed. </returns>
         public int TryChangeAmmo(int delta)
         {
             if(currentAmmo == 0 && delta < 0)

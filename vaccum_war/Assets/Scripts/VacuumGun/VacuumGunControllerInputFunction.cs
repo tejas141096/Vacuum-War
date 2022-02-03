@@ -8,10 +8,11 @@ namespace VWPrototype
     public class VacuumGunControllerInputFunction : AVacuumGunFunction
     {
         public InputActionProperty activeHeadActionProperty;
-        public bool enableOverrideHeadSwitchInput = false;
+        public bool enableDebugInput = false;
         public InputActionProperty SwitchEmptyHeadAction;
         public InputActionProperty SwitchShooterHeadAction;
         public InputActionProperty SwitchRollerHeadAction;
+        public InputActionProperty FillAmmoAction;
         private InputAction activeHeadActionInUse;
 
         new void Start()
@@ -23,19 +24,19 @@ namespace VWPrototype
                 Debug.Log("Vacuum Gun Input initialized without bindings.");
             }
             activeHeadActionInUse.Enable();
-            if (enableOverrideHeadSwitchInput)
+            if (enableDebugInput)
             {
-                //gunFrame.SwitchHead(HeadMode.Empty);
-                //gunFrame.allowToSwitchHead = false;
                 SwitchEmptyHeadAction.action.Enable();
                 SwitchShooterHeadAction.action.Enable();
                 SwitchRollerHeadAction.action.Enable();
+                FillAmmoAction.action.Enable();
             }
             else
             {
                 SwitchEmptyHeadAction.action.Disable();
                 SwitchShooterHeadAction.action.Disable();
                 SwitchRollerHeadAction.action.Disable();
+                FillAmmoAction.action.Disable();
             }
         }
 
@@ -71,6 +72,14 @@ namespace VWPrototype
                 //gunFrame.allowToSwitchHead = true;
                 gunFrame.SwitchHead(HeadMode.Roller);
                 //gunFrame.allowToSwitchHead = false;
+            }
+            if (FillAmmoAction.action.WasPerformedThisFrame())
+            {
+                var ammoFunction = gunFrame.GetComponent<VacuumGunAmmoFunction>();
+                if (ammoFunction)
+                {
+                    ammoFunction.TryChangeAmmo(ammoFunction.maxAmmo);
+                }
             }
         }
     }

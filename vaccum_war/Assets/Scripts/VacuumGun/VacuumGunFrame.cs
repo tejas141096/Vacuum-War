@@ -13,8 +13,15 @@ namespace VWPrototype
         [SerializeField]
         private List<AVacuumGunHead> heads;
 
-        private HeadMode currentMode = HeadMode.Empty;
+        private HeadMode _currentMode = HeadMode.Empty;
+        public HeadMode currentMode
+        {
+            get => _currentMode;
+        }
         private AVacuumGunHead currentHead;
+
+        public delegate void OnHeadSwitchedHandler();
+        public event OnHeadSwitchedHandler OnHeadSwitched;
 
         public static VacuumGunFrame defaultInstance;
 
@@ -35,7 +42,7 @@ namespace VWPrototype
 
         public void Activate()
         {
-            if(currentMode == HeadMode.Empty)
+            if(_currentMode == HeadMode.Empty)
             {
                 return;
             }
@@ -47,7 +54,7 @@ namespace VWPrototype
 
         public void OnGoing()
         {
-            if (currentMode == HeadMode.Empty)
+            if (_currentMode == HeadMode.Empty)
             {
                 return;
             }
@@ -59,7 +66,7 @@ namespace VWPrototype
 
         public void Deactivate()
         {
-            if (currentMode == HeadMode.Empty)
+            if (_currentMode == HeadMode.Empty)
             {
                 return;
             }
@@ -71,22 +78,24 @@ namespace VWPrototype
 
         public bool SwitchHead(HeadMode newMode)
         {
-            if (newMode == currentMode || !allowToSwitchHead)
+            if (newMode == _currentMode || !allowToSwitchHead)
             {
                 return false;
             }
             enableHead(newMode);
+            OnHeadSwitched?.Invoke();
             return true;
         }
 
         private void enableHead(HeadMode newMode)
         {
-            currentMode = newMode;
+            _currentMode = newMode;
 
             foreach (var h in heads)
             {
                 if (h.mode != newMode)
                 {
+                    h.Deactivate();
                     h.DisableHead();
                 }
                 else
