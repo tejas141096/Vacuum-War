@@ -114,6 +114,7 @@ MonoBehaviour:
   motionState: 0
   spinSpeed: 180
   motionMagnitude: 0.05
+  motionRandomMaxPercentage: 0.3
 --- !u!114 &114251381976014082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a926d2dbaf347e29cb9c7dc7bf85da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreAmount: 0
+  scoreAmount: 200
   timeAmount: 3
   explosionPrefab: {fileID: 1751494251524924, guid: e49851128b84f17499f224fb2f21bcf8,
     type: 3}

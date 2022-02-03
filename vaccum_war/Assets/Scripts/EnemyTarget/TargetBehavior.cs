@@ -27,6 +27,14 @@ public class TargetBehavior : MonoBehaviour
 				Instantiate (explosionPrefab, transform.position, transform.rotation);
 			}
 
+            if (VWPrototype.VacuumGunFrame.defaultInstance)
+            {
+				var s = VWPrototype.VacuumGunFrame.defaultInstance.GetComponent<VWPrototype.VacuumGunScoreFunction>();
+                if (s)
+                {
+					s.ChangeScore(scoreAmount);
+                }
+			}
 			// if game manager exists, make adjustments based on target properties
 			//if (GameManager.gm) {
 			//	GameManager.gm.targetHit (scoreAmount, timeAmount);

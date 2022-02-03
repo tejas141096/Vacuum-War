@@ -16,7 +16,12 @@ namespace VWPrototype
         private HeadMode currentMode = HeadMode.Empty;
         private AVacuumGunHead currentHead;
 
+        public static VacuumGunFrame defaultInstance;
 
+        private void Awake()
+        {
+            defaultInstance = this;
+        }
 
         // Start is called before the first frame update
         void Start()

@@ -17,8 +17,7 @@ namespace VWPrototype
         new void Start()
         {
             base.Start();
-            currentAmmo = initAmmo;
-            refreshIndicator();
+            ResetAmmo();
         }
 
         // Return the value that was succesfully changed
@@ -52,9 +51,10 @@ namespace VWPrototype
             }
         }
 
-        void Update()
+        public void ResetAmmo()
         {
-
+            currentAmmo = initAmmo;
+            refreshIndicator();
         }
 
         void refreshIndicator()
