@@ -1302,7 +1302,7 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
-  initTime: 90
+  initTime: 60
   scoreBoardText: {fileID: 3535539719845876355}
   audioSourceBGM: {fileID: 3231953418078090925}
   audioSourceHighScore: {fileID: 4225518467874848856}
