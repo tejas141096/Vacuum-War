@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class SerializableDictionary { }
 
+
 [Serializable]
 public class SerializableDictionary<TKey, TValue> :
     SerializableDictionary,
@@ -164,6 +165,8 @@ public class SerializableDictionary<TKey, TValue> :
     #endregion
 }
 
+
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(SerializableDictionary), true)]
 public class SerializableDictionaryDrawer : PropertyDrawer
 {
@@ -182,3 +185,4 @@ public class SerializableDictionaryDrawer : PropertyDrawer
         return EditorGUI.GetPropertyHeight(getListProperty(property), true);
     }
 }
+#endif
