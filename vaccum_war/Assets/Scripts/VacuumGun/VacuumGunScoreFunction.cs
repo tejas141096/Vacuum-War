@@ -20,7 +20,7 @@ namespace VWPrototype
 
         [HideInInspector]
         public int score = 0;
-        [HideInInspector]
+        //[HideInInspector]
         public int highScore = 0;
 
         private float timeRemaining = 0f;
@@ -32,7 +32,7 @@ namespace VWPrototype
             resetScoreAction.action.Enable();
             if (scoreBoardText)
             {
-                scoreBoardText.text = "Hold A to start scoring";
+                scoreBoardText.text = $"High Score: {highScore}\nHold A to start scoring";
             }
             if (audioSourceBGM)
             {

@@ -1269,7 +1269,8 @@ MonoBehaviour:
     - Key: E47A8B4D
       Value: 2
   AutoResetHead: 1
-  SecondsToResetHead: 2.5
+  SecondsToResetHead: 1
+  serialController: {fileID: 6658792161970516982}
 --- !u!114 &962634707660489570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,7 +1309,7 @@ MonoBehaviour:
   audioSourceHighScore: {fileID: 4225518467874848856}
   audioSourceGameOver: {fileID: 8149116774165945476}
   score: 0
-  highScore: 0
+  highScore: 500
 --- !u!114 &5536800002767578029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2322,6 +2323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SerialController_BinaryDelimited
       objectReference: {fileID: 0}
+    - target: {fileID: 1437167347957202, guid: e246aa68d79c3e6489397d781fa90434, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4802930798686362, guid: e246aa68d79c3e6489397d781fa90434, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2393,7 +2398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223f0e4bcadad324e9ab9a12c33326a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM4
+  portName: COM6
   baudRate: 115200
   messageListener: {fileID: 4426752701934428675}
   reconnectionDelay: 1000
