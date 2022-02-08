@@ -14,6 +14,7 @@ namespace VWPrototype
         public float SecondsToResetHead = 1.5f;
         private Coroutine resetTimer = null;
         public SerialControllerCustomDelimiter serialController;
+
         new void Start()
         {
             base.Start();
@@ -28,8 +29,9 @@ namespace VWPrototype
 
         private void Open(string arguments = null)
         {
+#if UNITY_STANDALONE_WIN
             System.Diagnostics.Process p = new System.Diagnostics.Process();
-            //设置.net的程序路径
+            // Set .net exe file path
             p.StartInfo.FileName = Application.streamingAssetsPath + "/GetSerialPorts.exe";
             p.StartInfo.Arguments = arguments;
             p.StartInfo.CreateNoWindow = true;
@@ -42,11 +44,12 @@ namespace VWPrototype
             p.WaitForExit();
             Manager(s.ReadToEnd());
             s.Close();
+#endif
         }
         private void Manager(string content)
         {
-            //处理接收到的内容
-            Debug.Log(content);
+            // deal with the content recieve
+            Debug.Log($"Initialized with ESP32 on serial port: {content}");
             serialController.portName = content;
             serialController.gameObject.SetActive(true);
         }
