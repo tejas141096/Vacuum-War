@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VWPrototype
+namespace VacuumWar
 {
-    public abstract class AVacuumGunHead : MonoBehaviour
+    public abstract class VacuumGunAccessoryBase : MonoBehaviour
     {
         // Default gun frame is the parent gameObject
         [SerializeField]
@@ -27,7 +27,7 @@ namespace VWPrototype
             }
             else
             {
-                // Todo: fall back if this is a "wild" head
+                // Todo: fall back if this is a "wild" accessory
             }
         }
 

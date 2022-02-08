@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System;
 
-namespace VWPrototype
+namespace VacuumWar
 {
-    public class VacuumGunScoreFunction : AVacuumGunFunction
+    public class VacuumGunComponentScore : VacuumGunComponentBase
     {
         [SerializeField]
         private InputActionProperty resetScoreAction;
@@ -97,9 +97,9 @@ namespace VWPrototype
             timeRemaining = initTime;
             score = 0;
             isScoring = true;
-            if (gunFrame.GetComponent<VacuumGunAmmoFunction>())
+            if (gunFrame.GetComponent<VacuumGunComponentAmmo>())
             {
-                gunFrame.GetComponent<VacuumGunAmmoFunction>().ResetAmmo();
+                gunFrame.GetComponent<VacuumGunComponentAmmo>().ResetAmmo();
             }
             refreshScoreBoard();
             if (audioSourceBGM)

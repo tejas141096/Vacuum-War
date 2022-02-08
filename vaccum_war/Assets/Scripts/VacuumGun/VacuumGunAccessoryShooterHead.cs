@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VWPrototype
+namespace VacuumWar
 {
-    public class ShooterHead : AVacuumGunHead
+    public class VacuumGunAccessoryShooterHead : VacuumGunAccessoryBase
     {
-        public ShooterHeadParams Params;
+        public VacuumGunAccessoryShooterHeadParams Params;
         public Transform projectileGeneratingPoint;
 
         public AudioSource audioSourceFire;
@@ -16,7 +16,7 @@ namespace VWPrototype
 
         public override void Activate()
         {
-            var ammoFunction = gunFrame.GetComponent<VacuumGunAmmoFunction>();
+            var ammoFunction = gunFrame.GetComponent<VacuumGunComponentAmmo>();
             if (ammoFunction)
             {
                 if (ammoFunction.TryChangeAmmo(-Params.ammoConsumePerRound) < 0)

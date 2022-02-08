@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VWPrototype
+namespace VacuumWar
 {
     [RequireComponent(typeof(VacuumGunFrame))]
-    public class AVacuumGunFunction : MonoBehaviour
+    public class VacuumGunComponentBase : MonoBehaviour
     {
         protected VacuumGunFrame gunFrame;
         // Start is called before the first frame update

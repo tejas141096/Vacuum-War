@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VWPrototype
+namespace VacuumWar
 {
     [RequireComponent(typeof(Collider))]
-    public class RollerHead : AVacuumGunHead
+    public class VacuumGunAccessoryRollerHead : VacuumGunAccessoryBase
     {
         public Collider detectionCollider;
         public AudioSource audioSourceOnGoing;
@@ -76,7 +76,7 @@ namespace VWPrototype
                 }
                 if (c)
                 {
-                    var ammoFunc = gunFrame.GetComponent<VacuumGunAmmoFunction>();
+                    var ammoFunc = gunFrame.GetComponent<VacuumGunComponentAmmo>();
                     if(ammoFunc)
                     {
                         var num = ammoFunc.TryChangeAmmo(c.ammoGain);

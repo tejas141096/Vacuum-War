@@ -2,23 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VWPrototype
+namespace VacuumWar
 {
 
     public class VacuumGunFrame : MonoBehaviour
     {
         public HeadMode initialHeadMode = HeadMode.Empty;
         public bool allowToSwitchHead = true;
-        // Defaultly find heads component in children gameobject.
+        /// <summary>
+        /// Defaultly find heads component in children gameobject.
+        /// </summary>
         [SerializeField]
-        private List<AVacuumGunHead> heads;
+        private List<VacuumGunAccessoryBase> heads;
 
         private HeadMode _currentMode = HeadMode.Empty;
         public HeadMode currentMode
         {
             get => _currentMode;
         }
-        private AVacuumGunHead currentHead;
+        private VacuumGunAccessoryBase currentHead;
 
         public delegate void OnHeadSwitchedHandler();
         public event OnHeadSwitchedHandler OnHeadSwitched;
@@ -35,7 +37,7 @@ namespace VWPrototype
         {
             if(heads.Count == 0)
             {
-                heads = new List<AVacuumGunHead>(GetComponentsInChildren<AVacuumGunHead>());
+                heads = new List<VacuumGunAccessoryBase>(GetComponentsInChildren<VacuumGunAccessoryBase>());
             }
             enableHead(initialHeadMode);
         }

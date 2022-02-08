@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace VWPrototype
+namespace VacuumWar
 {
-    public class VacuumGunControllerInputFunction : AVacuumGunFunction
+    public class VacuumGunComponentInput : VacuumGunComponentBase
     {
         public InputActionProperty activeHeadActionProperty;
         public bool enableDebugInput = false;
@@ -75,7 +75,7 @@ namespace VWPrototype
             }
             if (FillAmmoAction.action.WasPerformedThisFrame())
             {
-                var ammoFunction = gunFrame.GetComponent<VacuumGunAmmoFunction>();
+                var ammoFunction = gunFrame.GetComponent<VacuumGunComponentAmmo>();
                 if (ammoFunction)
                 {
                     ammoFunction.TryChangeAmmo(ammoFunction.maxAmmo);

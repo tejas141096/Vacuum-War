@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -3352464763604995361}
   - component: {fileID: -5098061139144526342}
   m_Layer: 0
-  m_Name: Box002
+  m_Name: Screw17
   m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

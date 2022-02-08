@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VWPrototype
+namespace VacuumWar
 {
-    [CreateAssetMenu(menuName = "VacuumWar/Prototype/ShooterHeadParams")]
-    public class ShooterHeadParams : ScriptableObject
+    [CreateAssetMenu(menuName = "VacuumWar/VacuumGunAccessory/ShooterHeadParams")]
+    public class VacuumGunAccessoryShooterHeadParams : ScriptableObject
     {
         public Rigidbody projectile;
         public float launchForce = 200f;

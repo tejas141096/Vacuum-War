@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace VWPrototype
+namespace VacuumWar
 {
-    public class VacuumGunAmmoFunction : AVacuumGunFunction
+    public class VacuumGunComponentAmmo : VacuumGunComponentBase
     {
         public int initAmmo = 10;
         public int maxAmmo = 30;

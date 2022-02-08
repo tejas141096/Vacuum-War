@@ -27,9 +27,9 @@ public class TargetBehavior : MonoBehaviour
 				Instantiate (explosionPrefab, transform.position, transform.rotation);
 			}
 
-            if (VWPrototype.VacuumGunFrame.defaultInstance)
+            if (VacuumWar.VacuumGunFrame.defaultInstance)
             {
-				var s = VWPrototype.VacuumGunFrame.defaultInstance.GetComponent<VWPrototype.VacuumGunScoreFunction>();
+				var s = VacuumWar.VacuumGunFrame.defaultInstance.GetComponent<VacuumWar.VacuumGunComponentScore>();
                 if (s)
                 {
 					s.ChangeScore(scoreAmount);

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VWPrototype
+namespace VacuumWar
 {
     public enum HeadMode
     {
@@ -15,8 +15,8 @@ namespace VWPrototype
     public static class VacuumGunCommon
     {
         private static Dictionary<HeadMode, Type> _headModeTypePairs = new Dictionary<HeadMode, Type>() {
-            {HeadMode.Roller, typeof(RollerHead) },
-            {HeadMode.Shooter, typeof(ShooterHead) },
+            {HeadMode.Roller, typeof(VacuumGunAccessoryRollerHead) },
+            {HeadMode.Shooter, typeof(VacuumGunAccessoryShooterHead) },
         };
 
         private static Dictionary<Type, HeadMode> _headTypeModePairs = new Dictionary<Type, HeadMode>();

@@ -4,9 +4,9 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-namespace VWPrototype
+namespace VacuumWar
 {
-    public class VacuumGunRFID : AVacuumGunFunction
+    public class VacuumGunComponentRFID : VacuumGunComponentBase
     {
         // Start is called before the first frame update
         public SerializableDictionary<string,HeadMode> UIDList;
