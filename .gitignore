@@ -58,3 +58,5 @@
 # Crashlytics generated file
 /VacuumWar/crashlytics-build.properties
 
+# UserSettings
+/VacuumWar/UserSettings/
